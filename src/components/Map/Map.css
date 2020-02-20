@@ -1,6 +1,12 @@
 .Map {
     width: 50%;
     height: 100%;
-    margin: auto;    float:left;
+    margin: auto;
+    float:left;
+}
 
+@media (max-width: 1000px) {
+    .Map {
+        width: 100%;
+    }
 }

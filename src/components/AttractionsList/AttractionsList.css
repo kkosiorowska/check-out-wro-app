@@ -4,3 +4,9 @@
     margin: auto;
     float:left;
 }
+
+@media (max-width: 1000px) {
+    .AttractionsList {
+        width: 100%;
+    }
+}
