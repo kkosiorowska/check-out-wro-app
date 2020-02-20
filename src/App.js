@@ -1,15 +1,21 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import classes from'./App.css';
-import Toolbar from './components/Navigation/Toolbar/Toolbar';
+import Layout from './hoc/Layout/Layout';
 import MainContent from './containers/MainContent/MainContent';
+import Auth from './containers/Auth/Auth';
 
 function App() {
   return (
-    <div className={classes.App}>
-        <Toolbar/>
-        <MainContent/>
-    </div>
+      <div className={classes.App}>
+          <Layout>
+              <Switch>
+                  <Route path="/auth" component={Auth} />
+                  <Route path="/" exact component={MainContent} />
+              </Switch>
+          </Layout>
+      </div>
   );
 }
 
