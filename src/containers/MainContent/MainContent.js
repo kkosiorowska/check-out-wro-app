@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
-export class MainContent extends Component {
+import Map from '../../components/Map/Map';
+import AttractionsList from '../../components/AttractionsList/AttractionsList';
 
+export class MainContent extends Component {
     render () {
         return (
             <div>
-                MainContent
+                <AttractionsList />
+                <Map/>
             </div>
         );
     }
