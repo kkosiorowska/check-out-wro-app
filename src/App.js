@@ -1,12 +1,12 @@
 import React from 'react';
 
-import './App.css';
+import classes from'./App.css';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
 import MainContent from './containers/MainContent/MainContent';
 
 function App() {
   return (
-    <div className="App">
+    <div className={classes.App}>
         <Toolbar/>
         <MainContent/>
     </div>
