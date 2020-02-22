@@ -1,8 +1,9 @@
 .AttractionsList {
     width: 50%;
-    height: 100%;
-    margin: auto;
+    height: 800px;
+    margin-top: 20px;
     float:left;
+    overflow-y: scroll;
 }
 
 @media (max-width: 1000px) {
