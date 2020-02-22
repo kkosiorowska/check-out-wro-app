@@ -1,5 +1,5 @@
 .Attraction {
-    background: linear-gradient(to left, white 99%,  #494ca2 1%);
+    background-color: white;
     margin: 10px auto;
     width: 95%;
     height: 120px;
@@ -20,6 +20,30 @@
     max-height: 100px;
     background-size: cover;
     padding: 0 10px;
+}
+
+.Landscape {
+    background: linear-gradient(to left, white 99%,  #494ca2 1%);
+}
+
+.Architecture {
+    background: linear-gradient(to left, white 99%,  #ffd700 1%);
+}
+
+.Gastronomy {
+    background: linear-gradient(to left, white 99%,  #f28dc4 1%);
+}
+
+.Other {
+    background: linear-gradient(to left, white 99%, #4f3a65 1%);
+}
+
+.Nature {
+    background: linear-gradient(to left, white 99%,  #079898 1%);
+}
+
+.Monument {
+    background: linear-gradient(to left, white 99%,  #940a37 1%);
 }
 
 @media (max-width:900px){
