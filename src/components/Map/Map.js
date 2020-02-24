@@ -5,6 +5,14 @@ import classes from './Map.css';
 import MapPoint from './MapPoint/MapPoint';
 
 const map = (props) => {
+    let markers = props.attractions.map(row => (
+        <MapPoint
+            key={row.name}
+            type={row.type}
+            name={row.name}
+            shortDescription={row.shortDescription}
+            geoCoordinate={row.geoCoordinate}/>
+    ));
     return (
         <div className={classes.Map}>
             <LeafletMap
@@ -17,18 +25,11 @@ const map = (props) => {
                 scrollWheelZoom={true}
                 dragging={true}
                 animate={true}
-                easeLinearity={0.35} >
+                easeLinearity={0.35}>
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                />
-                <MapPoint
-                type={"Other"}
-                name={"name"}
-                shortDescription={"shortDescription"}
-                width={51.11}
-                length={17.03}
-                />
+                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
+                {markers}
             </LeafletMap>
         </div>
     );

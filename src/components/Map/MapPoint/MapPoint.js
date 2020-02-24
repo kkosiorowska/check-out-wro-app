@@ -41,7 +41,7 @@ class MapPoint extends Component {
         return (
             <Marker
                 icon={iconCategory}
-                position={[this.props.width, this.props.length]}>
+                position={[this.props.geoCoordinate.latitude, this.props.geoCoordinate.longitude]}>
                 <Popup>
                     <header className={attachedClasses.join(' ')}>{this.props.name}</header>
                     <br/>
