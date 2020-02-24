@@ -5,31 +5,9 @@ import classes from './Attraction.css';
 
 class Attraction extends Component {
     render () {
-        let attachedClasses  = null;
-        switch (this.props.type) {
-            case ('Landscape'):
-                attachedClasses = [classes.Attraction, classes.Landscape];
-                break;
-            case ('Architecture'):
-                attachedClasses = [classes.Attraction, classes.Architecture];
-                break;
-            case ('Gastronomy'):
-                attachedClasses = [classes.Attraction, classes.Gastronomy];
-                break;
-            case ('Other'):
-                attachedClasses = [classes.Attraction, classes.Other];
-                break;
-            case ('Nature'):
-                attachedClasses = [classes.Attraction, classes.Nature];
-                break;
-            case ('Monument'):
-                attachedClasses = [classes.Attraction, classes.Monument];
-                break;
-            default:
-                attachedClasses = [classes.Attraction]
-        }
-        return (
-            <div className={attachedClasses.join(' ')}>
+        let attraction  = null;
+        let insideAttraction = (
+            <div>
                 <img
                     src={this.props.imagePath}
                     alt={this.props.name}/>
@@ -38,6 +16,30 @@ class Attraction extends Component {
                 <p style={{fontWeight: '100', fontSize: ' x-small', color: 'grey'}}>{this.props.address}</p>
             </div>
         );
+
+        switch (this.props.type) {
+            case ('Landscape'):
+                attraction = <div className={[classes.Attraction, classes.Landscape].join(' ')}>{insideAttraction}</div>;
+                break;
+            case ('Architecture'):
+                attraction = <div className={[classes.Attraction, classes.Architecture].join(' ')}>{insideAttraction}</div>;
+                break;
+            case ('Gastronomy'):
+                attraction = <div className={[classes.Attraction, classes.Gastronomy].join(' ')}>{insideAttraction}</div>;
+                break;
+            case ('Other'):
+                attraction = <div className={[classes.Attraction, classes.Other].join(' ')}>{insideAttraction}</div>;
+                break;
+            case ('Nature'):
+                attraction = <div className={[classes.Attraction, classes.Nature].join(' ')}>{insideAttraction}</div>;
+                break;
+            case ('Monument'):
+                attraction = <div className={[classes.Attraction, classes.Monument].join(' ')}>{insideAttraction}</div>;
+                break;
+            default:
+                attraction = null;
+        }
+        return attraction;
     }
 }
 
