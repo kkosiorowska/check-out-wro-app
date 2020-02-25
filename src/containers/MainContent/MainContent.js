@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
 import Map from '../../components/Map/Map';
-import AttractionsList from '../../components/AttractionsList/AttractionsList';
+import AttractionsList from '../../components/Attractions/AttractionsList/AttractionsList';
+import AttractionDetails from "../../components/Attractions/AttractionDetails/AttractionDetails";
 
 export class MainContent extends Component {
     state = {
+        attractionId: -1,
+        isSelected: false,
         attractions: [
             {
+                id: 0,
                 type: "Landscape",
                 imagePath: "https://2.bp.blogspot.com/-xogZXTP4G0E/XLNSvIh8xvI/AAAAAAACHAE/uDKmis_QM5E_zE9HYtI74Q7XV1kvhZubwCKgBGAs/s1600/IMG_20190302_145018-01.jpeg",
                 name: "Kolorowe podwórko",
@@ -18,6 +22,7 @@ export class MainContent extends Component {
                 }
             },
             {
+                id: 1,
                 type: "Architecture",
                 imagePath: "https://www.park-m.pl/images/news/czerwiec2017/Wroc%C5%82aw_Dunikowskiego_1.jpg",
                 name: "Bulwar Xawerego Dunikowskiego",
@@ -29,6 +34,7 @@ export class MainContent extends Component {
                 }
             },
             {
+                id: 2,
                 type: "Gastronomy",
                 imagePath: "https://lh4.googleusercontent.com/proxy/ICMftI9284ph2gWSWA8FM-Yy6YBqiBXFxWo-u78zVgermPjDXJT3Ysn6p8ZGllaZUEQ2xIYgiBABNJHchFOTlM8kcEjwtFdWMq4_tH9bXAQEz7ToYe3yLd4j0Vb3jJw",
                 name: "Szyciokawiarnia Nr 1 - Dresówka.pl",
@@ -42,13 +48,26 @@ export class MainContent extends Component {
         ]
     };
 
+    attractionSelectedHandler = (index) =>{
+        console.log(index);
+        this.setState({
+            attractionId: index,
+            isSelected: true})
+    };
+
     render () {
+        let attr = this.state.isSelected
+            ? <AttractionDetails
+                attractionId={this.state.attractionId}/>
+            : <AttractionsList
+                attractions={this.state.attractions}
+                attractionSelected={this.attractionSelectedHandler}/>;
         return (
             <div>
-                <AttractionsList
-                    attractions={this.state.attractions}/>
+                {attr}
                 <Map
-                    attractions={this.state.attractions}/>
+                    attractions={this.state.attractions}
+                    attractionSelected={this.attractionSelectedHandler}/>
             </div>
         );
     }

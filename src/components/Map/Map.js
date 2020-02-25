@@ -7,7 +7,9 @@ import MapPoint from './MapPoint/MapPoint';
 const map = (props) => {
     let markers = props.attractions.map(row => (
         <MapPoint
-            key={row.name}
+            clicked={props.attractionSelected}
+            key={row.id}
+            id={row.id}
             type={row.type}
             name={row.name}
             shortDescription={row.shortDescription}

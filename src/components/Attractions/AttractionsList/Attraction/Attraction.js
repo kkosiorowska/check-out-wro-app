@@ -19,22 +19,22 @@ class Attraction extends Component {
 
         switch (this.props.type) {
             case ('Landscape'):
-                attraction = <div className={[classes.Attraction, classes.Landscape].join(' ')}>{insideAttraction}</div>;
+                attraction = <div className={[classes.Attraction, classes.Landscape].join(' ')} onClick={() => this.props.clicked(this.props.id)}>{insideAttraction}</div>;
                 break;
             case ('Architecture'):
-                attraction = <div className={[classes.Attraction, classes.Architecture].join(' ')}>{insideAttraction}</div>;
+                attraction = <div className={[classes.Attraction, classes.Architecture].join(' ')} onClick={() => this.props.clicked(this.props.id)}>{insideAttraction}</div>;
                 break;
             case ('Gastronomy'):
-                attraction = <div className={[classes.Attraction, classes.Gastronomy].join(' ')}>{insideAttraction}</div>;
+                attraction = <div className={[classes.Attraction, classes.Gastronomy].join(' ')} onClick={() => this.props.clicked(this.props.id)}>{insideAttraction}</div>;
                 break;
             case ('Other'):
-                attraction = <div className={[classes.Attraction, classes.Other].join(' ')}>{insideAttraction}</div>;
+                attraction = <div className={[classes.Attraction, classes.Other].join(' ')} onClick={() => this.props.clicked(this.props.id)}>{insideAttraction}</div>;
                 break;
             case ('Nature'):
-                attraction = <div className={[classes.Attraction, classes.Nature].join(' ')}>{insideAttraction}</div>;
+                attraction = <div className={[classes.Attraction, classes.Nature].join(' ')} onClick={() => this.props.clicked(this.props.id)}>{insideAttraction}</div>;
                 break;
             case ('Monument'):
-                attraction = <div className={[classes.Attraction, classes.Monument].join(' ')}>{insideAttraction}</div>;
+                attraction = <div className={[classes.Attraction, classes.Monument].join(' ')} onClick={() => this.props.clicked(this.props.id)}>{insideAttraction}</div>;
                 break;
             default:
                 attraction = null;

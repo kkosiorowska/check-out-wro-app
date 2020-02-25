@@ -1,0 +1,19 @@
+.AttractionDetails {
+    background-color: white;
+    margin: 20px 1.5%;
+    float:left;
+    width: 47%;
+    height: 800px;
+    text-align: left;
+    box-shadow: 0 5px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+@media (max-width: 1000px) {
+    .AttractionDetails {
+        width: 97%;
+    }
+}

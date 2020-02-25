@@ -40,6 +40,7 @@ class MapPoint extends Component {
         });
         return (
             <Marker
+                onClick={() => this.props.clicked(this.props.id)}
                 icon={iconCategory}
                 position={[this.props.geoCoordinate.latitude, this.props.geoCoordinate.longitude]}>
                 <Popup>
