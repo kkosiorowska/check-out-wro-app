@@ -7,11 +7,35 @@
     text-align: left;
     box-shadow: 0 5px 3px #ccc;
     border: 1px solid #eee;
-    padding: 10px;
     box-sizing: border-box;
     border-radius: 10px;
 }
 
+.ImageContainer {
+    width: 100%;
+}
+
+.AttractionDetails Button {
+    position: absolute;
+    width: 50px;
+}
+
+.AttractionDetails img {
+    float:  left;
+    max-height: 300px;
+    width: 100%;
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.DetailsContainer {
+    float:  left;
+    padding: 25px 30px 0 30px;
+}
+
+.AttractionDetails strong {
+    color: #5a6371;
+}
 @media (max-width: 1000px) {
     .AttractionDetails {
         width: 97%;
