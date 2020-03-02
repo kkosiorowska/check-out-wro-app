@@ -1,4 +1,4 @@
-.Attraction {
+.AttractionItem {
     background-color: white;
     margin: 10px auto;
     width: 95%;
@@ -12,10 +12,10 @@
     cursor: pointer;
 }
 
-.Attraction:hover {
+.AttractionItem:hover {
     box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
 }
-.Attraction img {
+.AttractionItem img {
     float:  left;
     max-height: 100px;
     background-size: cover;
