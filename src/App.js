@@ -12,7 +12,8 @@ function App() {
           <Layout>
               <Switch>
                   <Route path="/auth" component={Auth} />
-                  <Route path="/" exact component={MainContent} />
+                  <Route path="/" component={MainContent} exact />
+                  <Route path="/attractions" component={MainContent} />
               </Switch>
           </Layout>
       </div>
