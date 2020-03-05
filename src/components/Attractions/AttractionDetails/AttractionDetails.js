@@ -5,7 +5,7 @@ import Button from '../../UI/Button/Button';
 import leftArrow from "../../../assets/images/left-arrow .png";
 
 const attractionDetails = (props) => {
-    const attraction = props.attractions.find(({ id }) => id === props.match.params.attractionId);
+    const attraction = props.attractions.find(({ id }) => id === props.attractionId);
         return (
             <div className={classes.AttractionDetails}>
                 <div className={classes.ImageContainer}>

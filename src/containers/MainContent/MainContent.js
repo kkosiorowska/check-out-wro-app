@@ -7,7 +7,7 @@ import AttractionDetails from "../../components/Attractions/AttractionDetails/At
 
 class MainContent extends Component {
     state = {
-        attractionId: -1,
+        attractionId: "",
         isSelected: false,
         attractions: [
             {
@@ -56,15 +56,18 @@ class MainContent extends Component {
     };
 
     attractionSelectedHandler = (index) => {
-        this.switchComponentHandler();
-        this.props.history.replace(`/attractions/${index}`);
+        // console.log("idx " + index);
+        this.setState({
+            attractionId: index,
+            isSelected: true
+        });
+
     };
 
     backToAttractionsListHandler = () => {
         this.switchComponentHandler();
-        this.props.history.replace('/');
+        this.setState({attractionId: ""});
     };
-
 
     switchComponentHandler = () => {
         this.setState( prevState => {
@@ -73,29 +76,19 @@ class MainContent extends Component {
     };
 
     render () {
-        let attractions = !this.state.isSelected
-            ? <AttractionsList
+        let attr = this.state.isSelected
+            ? <AttractionDetails
+                attractionId={this.state.attractionId}
+                clicked={this.backToAttractionsListHandler}
+                attractions={this.state.attractions}/>
+            : <AttractionsList
                 attractions={this.state.attractions}
-                attractionSelected={this.attractionSelectedHandler}/>
-            : null;
-
-        // let attr = this.state.isSelected
-        //     ? <AttractionDetails
-        //         attractionId={this.state.attractionId}/>
-        //     : <AttractionsList
-        //         attractions={this.state.attractions}
-        //         attractionSelected={this.attractionSelectedHandler}/>;
+                attractionSelected={this.attractionSelectedHandler}/>;
         return (
             <div>
-                {attractions}
-                <Route
-                    path={`/attractions/:attractionId`}
-                    component={(props) =>
-                        <AttractionDetails
-                            {...props}
-                            clicked={this.backToAttractionsListHandler}
-                            attractions={this.state.attractions}/>}/>
+                {attr}
                 <Map
+                    attractionId={this.state.attractionId}
                     attractions={this.state.attractions}
                     attractionSelected={this.attractionSelectedHandler}/>
             </div>
