@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import Map from '../../components/Map/Map';
 import AttractionsList from '../../components/Attractions/AttractionsList/AttractionsList';
 import AttractionDetails from "../../components/Attractions/AttractionDetails/AttractionDetails";
+import Filterbar from '../../components/Filterbar/Filterbar';
 
 class MainContent extends Component {
     state = {
@@ -86,6 +87,7 @@ class MainContent extends Component {
                 attractionSelected={this.attractionSelectedHandler}/>;
         return (
             <div>
+                <Filterbar />
                 {attr}
                 <Map
                     attractionId={this.state.attractionId}
