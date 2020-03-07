@@ -2,12 +2,16 @@ import React, { Component } from "react";
 
 import classes from './Filterbar.css';
 import Category from './Category/Category';
-import Button from "../UI/Button/Button";
+import Button from '../UI/Button/Button';
+import Input from '../UI/Input/Input';
+import SelectOptions from './SelectOptions/SelectOptions';
 
 class Filterbar extends Component {
     state = {
         categorySelected: "",
         isSelectedCategory: false,
+        districtSelected: "",
+        isSelectedDistrict: false,
         categories: [
             {
                 id: "0",
@@ -69,6 +73,20 @@ class Filterbar extends Component {
         if(this.state.isSelectedCategory) this.setState({isSelectedCategory: false});
     };
 
+    districtSelectedHandler = event => {
+        if(event.target.value){
+            this.setState({
+                districtSelected: event.target.value,
+                isSelectedDistrict: true
+            })
+        } else{
+            this.setState({
+                districtSelected: "",
+                isSelectedDistrict: false
+            })
+        }
+    };
+
     render() {
         let categories = this.state.categories.map(row => (
             <Category key={row.id}
@@ -77,18 +95,38 @@ class Filterbar extends Component {
                       isSelected={((row.name === this.state.categorySelected) ||  !this.state.isSelectedCategory) ? true : false}
             />
         ));
+        let districts = {
+            options: this.state.districts.map(row => (
+                {value: row.id, displayValue: row.name}
+            ))
+        };
+        districts.options.unshift({value: "", displayValue: "All"});
 
         return (
             <div className={classes.FilterBar}>
-                <div className={classes.Btn}>
-                    <Button
-                        clicked={this.allCategoriesHandler}
-                        btnType={this.state.isSelectedCategory ? "Danger" : "Success"}>All
-                    </Button>
+                <div  className={classes.DesktopOnly}>
+                    <div className={classes.Btn}>
+                        <Button
+                            clicked={this.allCategoriesHandler}
+                            btnType={this.state.isSelectedCategory ? "Danger" : "Success"}>All
+                        </Button>
+                    </div>
+                    <div className={classes.CategoryContainer}>
+                        {categories}
+                    </div>
+                    <div className={classes.DistrictsContainer}>
+                        <Input
+                            elementType="select"
+                            elementConfig={districts}
+                            changed={(event) => this.districtSelectedHandler(event)}
+                        />
+                    </div>
                 </div>
-                <div className={classes.CategoryContainer}>
-                    {categories}
-                </div>
+                <SelectOptions
+                    districts={this.state.districts}
+                    categories={this.state.categories}
+                    changed={this.districtSelectedHandler}
+                />
             </div>
         );
     }
