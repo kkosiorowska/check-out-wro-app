@@ -3,7 +3,7 @@
     margin: 20px 1.5%;
     float:left;
     width: 47%;
-    height: 800px;
+    height: 790px;
     text-align: left;
     box-shadow: 0 5px 3px #ccc;
     border: 1px solid #eee;
@@ -22,7 +22,7 @@
 
 .AttractionDetails img {
     float:  left;
-    max-height: 300px;
+    max-height: 350px;
     width: 100%;
     background-size: cover;
     border-radius: 10px 10px 0 0;

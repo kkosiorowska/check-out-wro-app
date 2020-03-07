@@ -1,8 +1,8 @@
 .AttractionsList {
+    float:left;
     width: 50%;
     height: 800px;
-    margin-top: 20px;
-    float:left;
+    margin-top: 10px;
     overflow-y: scroll;
 }
 
