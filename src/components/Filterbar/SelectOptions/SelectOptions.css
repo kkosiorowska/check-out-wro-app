@@ -1,0 +1,13 @@
+.SelectOptions{
+    width: 100%;
+}
+
+.InputContainer {
+    width: 50%;
+    float: left;
+}
+@media (min-width: 700px) {
+    .SelectOptions {
+        display: none;
+    }
+}
