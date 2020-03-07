@@ -1,0 +1,24 @@
+.Category {
+    float:left;
+    padding: 15px 10px 5px 10px;
+    cursor: pointer;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    border-style: none;
+}
+
+.Category img:hover {
+    border-radius: 100%;
+    box-shadow: 0 1px 3px #333333;
+}
+
+.Category img{
+    height: 40px;
+    width: 40px;
+}
+
+.CategorySelected {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    outline: none;
+}

@@ -4,8 +4,8 @@ import classes from './Category.css';
 
 const category = (props) => {
     return (
-        <div className={classes.Category}>
-            Category
+        <div className={ props.isSelected ? [classes.Category, classes.CategorySelected].join(' ') : classes.Category} onClick={ () => props.clicked(props.type) }>
+            <img  src={process.env.REACT_APP_URL + '/images/categories/logo-' + props.type.toLowerCase() +'.png'} alt={'logo-' + props.type}></img>
         </div>
     );
 };
