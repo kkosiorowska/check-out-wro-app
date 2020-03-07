@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
 import classes from './Filterbar.css';
+import Category from './Category/Category';
+import Button from "../UI/Button/Button";
 
 class Filterbar extends Component {
-    state ={
+    state = {
+        categorySelected: "",
+        isSelectedCategory: false,
         categories: [
             {
                 id: "0",
@@ -54,10 +58,37 @@ class Filterbar extends Component {
         ]
     };
 
+    categorySelectedHandler = type => {
+        this.setState({
+            categorySelected: type,
+            isSelectedCategory: true
+        });
+    };
+
+    allCategoriesHandler = () => {
+        if(this.state.isSelectedCategory) this.setState({isSelectedCategory: false});
+    };
+
     render() {
+        let categories = this.state.categories.map(row => (
+            <Category key={row.id}
+                      type={row.name}
+                      clicked={this.categorySelectedHandler}
+                      isSelected={((row.name === this.state.categorySelected) ||  !this.state.isSelectedCategory) ? true : false}
+            />
+        ));
+
         return (
             <div className={classes.FilterBar}>
-                FilterBar
+                <div className={classes.Btn}>
+                    <Button
+                        clicked={this.allCategoriesHandler}
+                        btnType={this.state.isSelectedCategory ? "Danger" : "Success"}>All
+                    </Button>
+                </div>
+                <div className={classes.CategoryContainer}>
+                    {categories}
+                </div>
             </div>
         );
     }

@@ -1,4 +1,17 @@
 .FilterBar {
     width: 100%;
-    height: 55px;
+    height: 65px;
+    /*padding: 0 20px;*/
+}
+
+.CategoryContainer {
+    width: 70%;
+    height: 100%;
+    float:left;
+}
+
+.Btn {
+    float:left;
+    padding-top: 10px;
+    padding-left: 20px;
 }
