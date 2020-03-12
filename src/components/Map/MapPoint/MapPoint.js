@@ -53,11 +53,11 @@ const mapPoint = (props) => {
             onClick={() => props.clicked(props.id)}
             icon={iconCategory}
             position={[props.geoCoordinate.latitude, props.geoCoordinate.longitude]}>
-            <Popup>
-                <header className={attachedClasses.join(' ')}>{props.name}</header>
-                <br/>
-                {props.shortDescription}
-            </Popup>
+                <Popup className={classes.SelectedMapPoint}>
+                    <header className={attachedClasses.join(' ')}>{props.name}</header>
+                    <br/>
+                    {props.shortDescription}
+                </Popup>
         </Marker>
     );
 
