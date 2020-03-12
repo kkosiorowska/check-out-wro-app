@@ -16,11 +16,13 @@
 }
 
 .AttractionDetails Button {
-    position: absolute;
+    display: block;
+    position: fixed;
     width: 50px;
 }
 
 .AttractionDetails img {
+    display: block;
     float:  left;
     max-height: 350px;
     width: 100%;
