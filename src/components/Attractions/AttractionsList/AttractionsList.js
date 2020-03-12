@@ -19,7 +19,9 @@ export class AttractionsList extends Component {
         ));
         return (
             <div className={classes.AttractionsList}>
-                {attractions}
+                <div className={classes.AttractionsListContainer}>
+                    {attractions}
+                </div>
             </div>
         );
     }

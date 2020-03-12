@@ -1,11 +1,14 @@
 .AttractionsList {
+    height: 86vh;
     float:left;
     width: 50%;
-    height: 800px;
     margin-top: 10px;
-    overflow-y: scroll;
 }
 
+.AttractionsListContainer{
+    height: 100%;
+    overflow-y: scroll;
+}
 @media (max-width: 1000px) {
     .AttractionsList {
         width: 100%;
