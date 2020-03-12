@@ -1,0 +1,15 @@
+.EmptyResult{
+    background-color: white;
+    box-sizing: border-box;
+    height: 98%;
+    margin: 0px 20px 0px 20px;
+    box-shadow: 0 5px 3px #ccc;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding-top: 10vh;
+    letter-spacing: 2px;
+}
+
+.EmptyResult img {
+    max-height: 40vh;
+}
