@@ -6,11 +6,13 @@ import AttractionsList from '../../components/Attractions/AttractionsList/Attrac
 import AttractionDetails from "../../components/Attractions/AttractionDetails/AttractionDetails";
 import Filterbar from '../../components/Filterbar/Filterbar';
 import axios from '../../axios-orders';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class MainContent extends Component {
     state = {
         attractionId: "",
         isSelected: false,
+        loading: true,
         attractions: []
     };
 
@@ -40,9 +42,11 @@ class MainContent extends Component {
     };
 
     getAllAttractions = () => {
+        this.setState( { loading: true } );
         axios.get( '/attractions.json' )
             .then( response => {
                 this.setState( { attractions: response.data } );
+                this.setState( { loading: false } );
             } )
             .catch( error => {
                 console.log(error);
@@ -104,6 +108,10 @@ class MainContent extends Component {
             : <AttractionsList
                 attractions={this.state.attractions}
                 attractionSelected={this.attractionSelectedHandler}/>;
+
+        if(this.state.loading){
+            attr = <Spinner />;
+        }
         return (
             <div>
                 <Filterbar
