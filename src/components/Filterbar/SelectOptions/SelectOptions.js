@@ -23,14 +23,14 @@ const selectOptions = (props) => {
                 <Input
                     elementType="select"
                     elementConfig={categories}
-                    changed={(event) => props.changed(event)}
+                    changed={(event) => props.changedCategory(event.target.value)}
                 />
             </div>
             <div className={classes.InputContainer}>
                 <Input
                     elementType="select"
                     elementConfig={districts}
-                    changed={(event) => props.changed(event)}
+                    changed={(event) => props.changedDistrict(event.target.value)}
                 />
             </div>
         </div>

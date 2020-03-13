@@ -67,23 +67,37 @@ class Filterbar extends Component {
             categorySelected: type,
             isSelectedCategory: true
         });
+        if(this.state.isSelectedDistrict) this.props.getAttractionsByCategoryAndDistrict(type, this.state.districtSelected);
+        else this.props.getAttractionsByCategory(type);
     };
 
     allCategoriesHandler = () => {
-        if(this.state.isSelectedCategory) this.setState({isSelectedCategory: false});
+        if(this.state.isSelectedCategory) {
+            this.setState({
+                categorySelected: "",
+                isSelectedCategory: false
+            });
+            if(this.state.isSelectedDistrict) this.props.getAttractionsByDistrict(this.state.districtSelected);
+            else this.props.getAllAttractions();
+        }
     };
 
-    districtSelectedHandler = event => {
-        if(event.target.value){
-            this.setState({
-                districtSelected: event.target.value,
-                isSelectedDistrict: true
-            })
-        } else{
+    districtSelectedHandler = district => {
+        if(district === 'All') {
             this.setState({
                 districtSelected: "",
                 isSelectedDistrict: false
-            })
+            });
+            if(this.state.isSelectedCategory) this.props.getAttractionsByCategory(this.state.categorySelected);
+            else this.props.getAllAttractions();
+
+        } else {
+            this.setState({
+                districtSelected: district,
+                isSelectedDistrict: true
+            });
+            if(this.state.isSelectedCategory) this.props.getAttractionsByCategoryAndDistrict(this.state.categorySelected, district);
+            else this.props.getAttractionsByDistrict(district);
         }
     };
 
@@ -97,10 +111,10 @@ class Filterbar extends Component {
         ));
         let districts = {
             options: this.state.districts.map(row => (
-                {value: row.id, displayValue: row.name}
+                {value: row.name, displayValue: row.name}
             ))
         };
-        districts.options.unshift({value: "", displayValue: "All"});
+        districts.options.unshift({value: "All", displayValue: "All"});
 
         return (
             <div className={classes.FilterBar}>
@@ -118,14 +132,15 @@ class Filterbar extends Component {
                         <Input
                             elementType="select"
                             elementConfig={districts}
-                            changed={(event) => this.districtSelectedHandler(event)}
+                            changed={(event) => this.districtSelectedHandler(event.target.value)}
                         />
                     </div>
                 </div>
                 <SelectOptions
                     districts={this.state.districts}
                     categories={this.state.categories}
-                    changed={this.districtSelectedHandler}
+                    changedCategory={this.categorySelectedHandler}
+                    changedDistrict={this.districtSelectedHandler}
                 />
             </div>
         );
