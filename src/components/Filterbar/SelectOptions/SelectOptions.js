@@ -9,13 +9,13 @@ const selectOptions = (props) => {
             {value: row.name, displayValue: row.name}
         ))
     };
-    categories.options.unshift({value: "", displayValue: "All"});
+    categories.options.unshift({value: "All", displayValue: "All"});
     let districts = {
         options: props.districts.map(row => (
             {value: row.name, displayValue: row.name}
         ))
     };
-    districts.options.unshift({value: "", displayValue: "All"});
+    districts.options.unshift({value: "All", displayValue: "All"});
 
     return (
         <div className={classes.SelectOptions}>

@@ -63,12 +63,22 @@ class Filterbar extends Component {
     };
 
     categorySelectedHandler = type => {
-        this.setState({
-            categorySelected: type,
-            isSelectedCategory: true
-        });
-        if(this.state.isSelectedDistrict) this.props.getAttractionsByCategoryAndDistrict(type, this.state.districtSelected);
-        else this.props.getAttractionsByCategory(type);
+        if(type === 'All') {
+            this.setState({
+                categorySelected: "",
+                isSelectedCategory: false
+            });
+            if(this.state.isSelectedDistrict) this.props.getAttractionsByDistrict(this.state.districtSelected);
+            else this.props.getAllAttractions();
+
+        } else {
+            this.setState({
+                categorySelected: type,
+                isSelectedCategory: true
+            });
+            if(this.state.isSelectedDistrict) this.props.getAttractionsByCategoryAndDistrict(type, this.state.districtSelected);
+            else this.props.getAttractionsByCategory(type);
+        }
     };
 
     allCategoriesHandler = () => {
