@@ -17,7 +17,7 @@
 
 .AttractionDetails Button {
     display: block;
-    position: fixed;
+    position: absolute;
     width: 50px;
 }
 
