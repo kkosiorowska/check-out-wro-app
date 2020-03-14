@@ -1,0 +1,3 @@
+export {
+    fetchAttractions
+} from './attraction'

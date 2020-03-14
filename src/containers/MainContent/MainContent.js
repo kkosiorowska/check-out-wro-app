@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+ import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 import Map from '../../components/Map/Map';
 import AttractionsList from '../../components/Attractions/AttractionsList/AttractionsList';
@@ -7,18 +8,17 @@ import AttractionDetails from "../../components/Attractions/AttractionDetails/At
 import Filterbar from '../../components/Filterbar/Filterbar';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import * as actions from '../../store/actions/index';
 
 class MainContent extends Component {
     state = {
         attractionId: "",
         isSelected: false,
-        loading: true,
-        attractions: []
     };
 
     constructor (props) {
         super(props);
-        this.getAllAttractions();
+        this.props.onFetchAttractions();
     }
 
     attractionSelectedHandler = (index) => {
@@ -39,18 +39,6 @@ class MainContent extends Component {
         this.setState( prevState => {
             return {isSelected: !prevState.isSelected}
         })
-    };
-
-    getAllAttractions = () => {
-        this.setState( { loading: true } );
-        axios.get( '/attractions.json' )
-            .then( response => {
-                this.setState( { attractions: response.data } );
-                this.setState( { loading: false } );
-            } )
-            .catch( error => {
-                console.log(error);
-            } );
     };
 
     getAttractionsByCategory = type => {
@@ -100,22 +88,21 @@ class MainContent extends Component {
     };
 
     render () {
-        let attr = this.state.isSelected
+        let attr = <Spinner />;
+        if(!this.props.loading){
+             attr = this.state.isSelected
             ? <AttractionDetails
                 attractionId={this.state.attractionId}
                 clicked={this.backToAttractionsListHandler}
-                attractions={this.state.attractions}/>
+                attractions={this.props.attractions}/>
             : <AttractionsList
-                attractions={this.state.attractions}
+                attractions={this.props.attractions}
                 attractionSelected={this.attractionSelectedHandler}/>;
-
-        if(this.state.loading){
-            attr = <Spinner />;
         }
         return (
             <div>
                 <Filterbar
-                    getAllAttractions={this.getAllAttractions}
+                    getAllAttractions={this.props.onFetchAttractions}
                     getAttractionsByCategory={this.getAttractionsByCategory}
                     getAttractionsByDistrict={this.getAttractionsByDistrict}
                     getAttractionsByCategoryAndDistrict={this.getAttractionsByCategoryAndDistrict}
@@ -123,11 +110,24 @@ class MainContent extends Component {
                 {attr}
                 <Map
                     attractionId={this.state.attractionId}
-                    attractions={this.state.attractions}
+                    attractions={this.props.attractions}
                     attractionSelected={this.attractionSelectedHandler}/>
             </div>
         );
     }
 }
 
-export default MainContent;
+const mapStateToProps = state => {
+    return {
+        attractions: state.attractions,
+        loading: state.loading,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchAttractions: () => dispatch( actions.fetchAttractions() )
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContent);
