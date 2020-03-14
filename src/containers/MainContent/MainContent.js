@@ -73,8 +73,8 @@ class MainContent extends Component {
 
 const mapStateToProps = state => {
     return {
-        attractions: state.attractions,
-        loading: state.loading,
+        attractions: state.attraction.attractions,
+        loading: state.attraction.loading,
     };
 };
 
