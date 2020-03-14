@@ -11,6 +11,7 @@ import * as actions from '../../store/actions/index';
 class Filterbar extends Component {
 
     categorySelectedHandler = type => {
+        this.props.backToAttractionsListHandler();
         if(type === 'All') {
             this.props.onSelectAllCategories();
             if(this.props.isSelectedDistrict) this.props.getAttractionsByDistrict(this.props.selectedDistrict);
@@ -24,6 +25,7 @@ class Filterbar extends Component {
     };
 
     allCategoriesHandler = () => {
+        this.props.backToAttractionsListHandler();
         if(this.props.isSelectedCategory) {
             this.props.onSelectAllCategories();
             if(this.props.isSelectedDistrict) this.props.getAttractionsByDistrict(this.props.selectedDistrict);
@@ -32,6 +34,7 @@ class Filterbar extends Component {
     };
 
     districtSelectedHandler = district => {
+        this.props.backToAttractionsListHandler();
         if(district === 'All') {
             this.props.onSelectAllDistricts();
             if(this.props.isSelectedCategory) this.props.getAttractionsByCategory(this.props.selectedCategory);

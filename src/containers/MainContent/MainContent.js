@@ -28,14 +28,10 @@ class MainContent extends Component {
     };
 
     backToAttractionsListHandler = () => {
-        this.switchComponentHandler();
-        this.setState({attractionId: ""});
-    };
-
-    switchComponentHandler = () => {
-        this.setState( prevState => {
-            return {isSelected: !prevState.isSelected}
-        })
+        this.setState({
+            attractionId: "",
+            isSelected: false
+        });
     };
 
     render () {
@@ -51,6 +47,7 @@ class MainContent extends Component {
         return (
             <div>
                 <Filterbar
+                    backToAttractionsListHandler={this.backToAttractionsListHandler}
                     getAllAttractions={this.props.onFetchAttractions}
                     getAttractionsByCategory={this.props.onFetchAttractionsByCategory}
                     getAttractionsByDistrict={this.props.onfetchAttractionsByDistrict}

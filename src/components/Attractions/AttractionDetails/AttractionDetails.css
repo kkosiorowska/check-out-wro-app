@@ -3,7 +3,7 @@
     margin: 20px 1.5%;
     float:left;
     width: 47%;
-    height: 790px;
+    height: 84vh;
     text-align: left;
     box-shadow: 0 5px 3px #ccc;
     border: 1px solid #eee;
@@ -41,5 +41,6 @@
 @media (max-width: 1000px) {
     .AttractionDetails {
         width: 97%;
+        height: 100%;
     }
 }

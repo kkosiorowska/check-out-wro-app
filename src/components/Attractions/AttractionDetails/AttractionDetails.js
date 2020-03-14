@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './AttractionDetails.css';
 import Button from '../../UI/Button/Button';
-import leftArrow from "../../../assets/images/left-arrow .png";
+import leftArrow from '../../../assets/images/left-arrow .png';
 
 const attractionDetails = (props) => {
     const attraction = props.attractions.find(({ id }) => id === props.attractionId);
