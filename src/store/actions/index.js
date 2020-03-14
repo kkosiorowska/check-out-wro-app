@@ -1,3 +1,6 @@
 export {
-    fetchAttractions
+    fetchAttractions,
+    fetchAttractionsByCategory,
+    fetchAttractionsByDistrict,
+    fetchAttractionsByCategoryAndDistrict
 } from './attraction'

@@ -33,3 +33,59 @@ export const fetchAttractions = () => {
             } );
     };
 };
+
+export const fetchAttractionsByCategory = (type) => {
+    return dispatch => {
+        dispatch(fetchAttractionsStart());
+        const queryParams = '?orderBy="type"&equalTo="'+ type +'"';
+        axios.get( '/attractions.json' + queryParams)
+            .then( response => {
+                const fetchedAttractions = [];
+                for ( let key in response.data ) {
+                    fetchedAttractions.push( {
+                        ...response.data[key],
+                        id: key
+                    } );
+                }
+                dispatch(fetchAttractionsSuccess(fetchedAttractions));
+            } )
+            .catch( error => {
+                dispatch(fetchAttractionsFail(error));
+            } );
+    };
+};
+
+export const fetchAttractionsByDistrict = (district) => {
+    return dispatch => {
+        dispatch(fetchAttractionsStart());
+        const queryParams = '?orderBy="district"&equalTo="'+ district +'"';
+        axios.get( '/attractions.json' + queryParams)
+            .then( response => {
+                const fetchedAttractions = [];
+                for ( let key in response.data ) {
+                    fetchedAttractions.push( {
+                        ...response.data[key],
+                        id: key
+                    } );
+                }
+                dispatch(fetchAttractionsSuccess(fetchedAttractions));
+            } )
+            .catch( error => {
+                dispatch(fetchAttractionsFail(error));
+            } );
+    };
+};
+
+export const fetchAttractionsByCategoryAndDistrict = (typeCategory, dis) => {
+    return dispatch => {
+        dispatch(fetchAttractionsStart());
+        axios.get( '/attractions.json')
+            .then( response => {
+                const fetchedAttractions = response.data.filter(({ district, type }) => district === dis && type === typeCategory);
+                dispatch(fetchAttractionsSuccess(fetchedAttractions));
+            } )
+            .catch( error => {
+                dispatch(fetchAttractionsFail(error));
+            } );
+    };
+};

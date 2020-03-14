@@ -41,52 +41,6 @@ class MainContent extends Component {
         })
     };
 
-    getAttractionsByCategory = type => {
-        const queryParams = '?orderBy="type"&equalTo="'+ type +'"';
-        axios.get( '/attractions.json' + queryParams)
-            .then( response => {
-                const fetchedAttractions = [];
-                for ( let key in response.data ) {
-                    fetchedAttractions.push( {
-                        ...response.data[key],
-                        id: key
-                    } );
-                }
-                this.setState( { attractions: fetchedAttractions } );
-            } )
-            .catch( error => {
-                console.log(error);
-            } );
-    };
-
-    getAttractionsByDistrict = district => {
-        const queryParams = '?orderBy="district"&equalTo="'+ district +'"';
-        axios.get( '/attractions.json' + queryParams)
-            .then( response => {
-                const fetchedAttractions = [];
-                for ( let key in response.data ) {
-                    fetchedAttractions.push( {
-                        ...response.data[key],
-                        id: key
-                    } );
-                }
-                this.setState( { attractions: fetchedAttractions } );
-            } )
-            .catch( error => {
-                console.log(error);
-            } );
-    };
-
-    getAttractionsByCategoryAndDistrict = (typeCategory, dis) => {
-        axios.get( '/attractions.json' )
-            .then( response => {
-                this.setState( { attractions: response.data.filter(({ district, type }) => district === dis && type === typeCategory) } );
-            } )
-            .catch( error => {
-                console.log(error);
-            } );
-    };
-
     render () {
         let attr = <Spinner />;
         if(!this.props.loading){
@@ -103,9 +57,9 @@ class MainContent extends Component {
             <div>
                 <Filterbar
                     getAllAttractions={this.props.onFetchAttractions}
-                    getAttractionsByCategory={this.getAttractionsByCategory}
-                    getAttractionsByDistrict={this.getAttractionsByDistrict}
-                    getAttractionsByCategoryAndDistrict={this.getAttractionsByCategoryAndDistrict}
+                    getAttractionsByCategory={this.props.onFetchAttractionsByCategory}
+                    getAttractionsByDistrict={this.props.onfetchAttractionsByDistrict}
+                    getAttractionsByCategoryAndDistrict={this.props.onfetchAttractionsByCategoryAndDistrict}
                 />
                 {attr}
                 <Map
@@ -126,7 +80,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchAttractions: () => dispatch( actions.fetchAttractions() )
+        onFetchAttractions: () => dispatch( actions.fetchAttractions() ),
+        onFetchAttractionsByCategory: (type) => dispatch( actions.fetchAttractionsByCategory(type) ),
+        onfetchAttractionsByDistrict: (district) => dispatch( actions.fetchAttractionsByDistrict(district) ),
+        onfetchAttractionsByCategoryAndDistrict: (typeCategory, dis) => dispatch( actions.fetchAttractionsByCategoryAndDistrict(typeCategory, dis) )
     };
 };
 
