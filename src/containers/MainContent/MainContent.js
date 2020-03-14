@@ -39,17 +39,15 @@ class MainContent extends Component {
     };
 
     render () {
-        let attr = <Spinner />;
-        if(!this.props.loading){
-             attr = this.state.isSelected
+        let attr = this.state.isSelected
             ? <AttractionDetails
                 attractionId={this.state.attractionId}
                 clicked={this.backToAttractionsListHandler}
                 attractions={this.props.attractions}/>
             : <AttractionsList
+                loading={this.props.loading}
                 attractions={this.props.attractions}
                 attractionSelected={this.attractionSelectedHandler}/>;
-        }
         return (
             <div>
                 <Filterbar
