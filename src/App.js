@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import classes from'./App.css';
 import Layout from './hoc/Layout/Layout';
 import MainContent from './containers/MainContent/MainContent';
-import Auth from './containers/Auth/Auth';
 
 function App() {
   return (

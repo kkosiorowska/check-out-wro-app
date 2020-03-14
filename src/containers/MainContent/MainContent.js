@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
- import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 import Map from '../../components/Map/Map';
 import AttractionsList from '../../components/Attractions/AttractionsList/AttractionsList';
 import AttractionDetails from "../../components/Attractions/AttractionDetails/AttractionDetails";
 import Filterbar from '../../components/Filterbar/Filterbar';
-import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 
@@ -22,7 +20,6 @@ class MainContent extends Component {
     }
 
     attractionSelectedHandler = (index) => {
-        // console.log("idx " + index);
         this.setState({
             attractionId: index,
             isSelected: true

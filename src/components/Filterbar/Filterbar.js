@@ -7,7 +7,6 @@ import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import SelectOptions from './SelectOptions/SelectOptions';
 import * as actions from '../../store/actions/index';
-import category from "./Category/Category";
 
 class Filterbar extends Component {
 
@@ -92,7 +91,6 @@ class Filterbar extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.filterbar)
     return {
         categories: state.filterbar.categories,
         districts: state.filterbar.districts,
