@@ -1,7 +1,7 @@
 # Check Out Wro
 
 ## Description
-Tourist application to check out places in Wrocław. User has a posibility to look for attractions. After click marker on map or item from list user will see more information about choosed place.
+Tourist application to check out places in Wrocław. User has posibility to look for attractions. After click marker on map or item from list user will see more information about place.
 * [Demo Version](https://react-check-wro.firebaseapp.com/)
 
 ### Features
